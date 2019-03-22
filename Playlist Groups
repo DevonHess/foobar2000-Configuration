@@ -1,0 +1,1 @@
+$rgb(204,179,190)$if2(%album%,$directory(%path%))$if($or($not($meta_test(totaldiscs)),$greater(%totaldiscs%,1)),[ $rgb()'['$rgb(204,179,190,255,255,255)%discnumber%$rgb()']'])
