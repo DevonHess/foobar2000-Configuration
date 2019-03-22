@@ -1,0 +1,2 @@
+$rgb(204,179,190,255,255,255)%title%
+$tab()'['$rgb(204,179,190,255,255,255)%size%$rgb()']'$ifequal(%filesize%,0,, '['$rgb(204,179,190,255,255,255)%filesize_natural%$rgb()']')$ifequal(%length_seconds%,0,, '['$rgb(204,179,190,255,255,255)%length%$rgb()']')
