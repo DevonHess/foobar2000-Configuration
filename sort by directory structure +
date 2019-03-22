@@ -1,0 +1,30 @@
+// Set root folder name
+$puts(key,Music)
+$puts(root,$cut(%path%,$add($strstr(%path%,$get(key)),$len($get(key)))))
+
+// Find file-safe album name
+$puts(albumfix,$trim($replace(%album%,",'''',*,x,/,-,:,-,<,_,>,_,?,,\,-,|,-)))
+$ifequal($strrchr(%album%,.),$len(%album%),
+$puts(albumfix,$cut($get(albumfix),$sub($len($get(albumfix)),1)))
+,)
+
+// Convert file path to album list path
+$puts(path,$directory_path($replace($replace(%path%,$get(root),),\,|)))
+
+// Remove subfolders
+$puts(path,$replace($get(path)
+,|CD%discnumber%,
+,|CD %discnumber%,
+,|Disc %discnumber%,
+,|DISC %discnumber%,
+))
+
+// Compare folder name to album and replace
+$if(
+$and($meta_test(album),$strcmp($substr($get(path),$add($strrchr($get(path),|),1),$len($get(path))),$get(albumfix))),
+$puts(path,$directory_path($get(path)))
+)
+
+// Output
+$get(path)
+[|%album%]|[[%discnumber%.]%track number%. ]%title%
