@@ -1,0 +1,5 @@
+ $if2($meta(title),$rgb(40,40,40)No Title$rgb())
+$crlf() $if2(%album artist%[ / %track artist%],$rgb(40,40,40)No Artist$rgb())
+$crlf() $if2(%album%,$rgb(40,40,40)No Album$rgb())
+$crlf() [['['$rgb(204,179,190,255,255,255)[%discnumber%.][%tracknumber%.$rgb()]']'] ]$ifequal(%filesize%,0,$rgb(40,40,40)No Info$rgb(),'['$rgb(204,179,190,255,255,255)%filesize_natural%$rgb()']' '['$rgb(204,179,190,255,255,255)%length%$rgb()']')[ '['$rgb(204,179,190,255,255,255)%date%$rgb()']']
+$crlf() $if($stricmp(%filename_ext%,),$rgb(40,40,40)No File$rgb(),%filename_ext%)
