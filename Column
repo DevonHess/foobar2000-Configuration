@@ -1,0 +1,21 @@
+$if(%isplaying%,
+$rgb(),
+$rgb(204,179,190,255,255,255)
+)
+$ifequal(%totaltracks%,1,,[%track number%. ])
+$rgb()
+[%title%]
+$if($not($strcmp(%artist%,%album artist%)),
+$tab(2)
+$if(%isplaying%,
+$rgb(),
+$rgb(204,179,190,255,255,255)
+)
+%artist%
+)
+$tab()
+$if(%isplaying%,
+$rgb(),
+$rgb(204,179,190,255,255,255)
+)
+$if2(%playback_time_remaining%,%length%)
