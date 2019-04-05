@@ -22,7 +22,11 @@ back
 
 disc%discnumber%
 
+disc %discnumber%
+
 cd%discnumber%
+
+cd %discnumber%
 
 disc
 
@@ -30,7 +34,11 @@ cd
 
 ..\disc%discnumber%
 
+..\disc %discnumber%
+
 ..\cd%discnumber%
+
+..\cd %discnumber%
 
 ..\disc
 
