@@ -2,10 +2,10 @@
 $puts(key,Music)
 $puts(root,$cut(%path%,$add($strstr(%path%,$get(key)),$len($get(key)))))
 
-// Find file-safe album name
-$puts(albumfix,$trim($replace(%album%,",'''',*,x,/,-,:,-,<,_,>,_,?,,\,-,|,-)))
+// Find filename-safe album name
+$puts(albumfix,$replace(%album%,\,,/,,:,,*,,?,,",,<,,>,,|,))
 $ifequal($strrchr(%album%,.),$len(%album%),
-$puts(albumfix,$cut($get(albumfix),$sub($len($get(albumfix)),1)))
+$puts(albumfix,$trim($cut($get(albumfix),$sub($len($get(albumfix)),1))))
 ,)
 
 // Convert file path to album list path
@@ -19,12 +19,15 @@ $puts(path,$replace($get(path)
 ,|DISC %discnumber%,
 ))
 
+// Find filepath album name
+$puts(albumfile,$substr($get(path),$add($strrchr($get(path),|),1),$len($get(path))))
+
 // Compare folder name to album and replace
 $if(
-$and($meta_test(album),$strcmp($substr($get(path),$add($strrchr($get(path),|),1),$len($get(path))),$get(albumfix))),
+$and($meta_test(album),$strcmp($get(albumfile),$get(albumfix))),
 $puts(path,$directory_path($get(path)))
 )
 
 // Output
 $get(path)
-[|%album%]|[[%discnumber%.]%track number%. ]%title%
+[|%album%]|[[%discnumber%.]%tracknumber%. ]%title%
